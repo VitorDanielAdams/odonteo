@@ -65,6 +65,7 @@ function Login() {
         <label htmlFor='email'>
           Email:
           <input
+            data-testid='email'
             className='form-input'
             id='email'
             name='email'
@@ -75,6 +76,7 @@ function Login() {
         <label htmlFor='password'>
           Senha:
           <input
+            data-testid='password'
             className='form-input'
             id='password'
             name='password'
