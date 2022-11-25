@@ -55,7 +55,7 @@ function Login() {
   }
 
   return (
-    <main>
+    <main id='login-page' data-testid='login-page'>
       { message.show &&
         <Message addClass={message.status}>
           {message.text}
