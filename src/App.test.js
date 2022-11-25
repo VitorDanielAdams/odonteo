@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
+import { createBrowserHistory } from 'history';
 
 describe('Test of routes', () => {
   beforeEach(() => {
@@ -20,5 +21,7 @@ describe('Test of routes', () => {
     const loginPage = screen.getByTestId('login-page');
     expect(loginPage).toBeInTheDocument();
   });
+
+  
 
 });
