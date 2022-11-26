@@ -57,7 +57,7 @@ function Statement() {
   }
 
   return (
-    <main>
+    <main id='statement-page' data-testid='statement-page'>
       <form>
         <label htmlFor='beginning-date'>
           Data de início:

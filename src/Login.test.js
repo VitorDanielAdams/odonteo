@@ -1,6 +1,8 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import Login from './pages/Login/Login';
+import Main from './pages/Main/Main';
+import fetchApi from './utils/fetch';
 
 function renderElement(element) {
     render(
@@ -10,16 +12,12 @@ function renderElement(element) {
     );
 }
 
-const fetch = jest.fn(() => Promise.resolve({
-    json: () => Promise.resolve({ email: expectedEmail, password: expectedPassword })
-}));
-
 const expectedEmail = 'vitor.adams@email.com';
 const expectedPassword = '123456@Aa';
 
 describe('Test usage of Login page', () => { 
 
-    it('Should login when data is entered and click login button', async () => {
+    it('Should login when data is entered and click login button and return error message', async () => {
         renderElement(<Login />);
         
         const email = screen.getByTestId('email');
@@ -37,15 +35,16 @@ describe('Test usage of Login page', () => {
         expect(password).toHaveValue('123456@Aa');
 
         const button = screen.getByText(/entrar/i);
-        fireEvent.click(button);
+        fireEvent.submit(button);
 
-        const result = await fetch('https://odonteo-backend.herokuapp.com/login', 
+        const result = await fetchApi('https://odonteo-backend.herokuapp.com/login', 
             {
                 method: 'POST',
-                body: JSON.stringify({email: 'vitor.adams@email.com', password: '123456@Aa'})
+                body: JSON.stringify({email: expectedEmail, password: expectedPassword})
             }   
         );
 
-        expect(fetch).toHaveBeenCalledTimes(1);
+        expect(result.message).toContain('incorreto');
     })
+
 })
