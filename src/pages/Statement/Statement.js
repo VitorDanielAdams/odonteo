@@ -64,6 +64,7 @@ function Statement() {
           <input
             className='form-input date'
             id='beginning-date'
+            data-testid='beginning-date'
             name='beginningDate'
             type='date'
             onChange={(e) => handleChange(e, setDatesOfStatement)}
@@ -74,6 +75,7 @@ function Statement() {
           <input
             className='form-input date'
             id='ending-date'
+            data-testid='ending-date'
             name='endingDate'
             type='date'
             onChange={(e) => handleChange(e, setDatesOfStatement)}
@@ -94,7 +96,7 @@ function Statement() {
           >
             x
           </button>
-          <table>
+          <table data-testid='table'>
             <thead>
               <tr>
                 <th>total</th>
